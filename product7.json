@@ -1,0 +1,515 @@
+{
+	"info": {
+		"_postman_id": "32cf5d64-c1de-4855-81e3-9ab8276a17b8",
+		"name": "sanjithproductlisting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50259541",
+		"_collection_link": "https://jaganantonym24bcg020-7023488.postman.co/workspace/sanjith~bf031861-eae0-4484-8f86-6806bd30a542/collection/50259541-32cf5d64-c1de-4855-81e3-9ab8276a17b8?action=share&source=collection_link&creator=50259541"
+	},
+	"item": [
+		{
+			"name": "getallproducts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"status code within range\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.within(200, 404);\r",
+							"});\r",
+							"pm.test(\"Range of the status code verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,205]);\r",
+							"})\r",
+							"pm.test(\"status code below verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.below(201);\r",
+							"})\r",
+							"pm.test(\"status code above verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.above(199);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"})\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(100);\r",
+							"})\r",
+							"pm.test(\"check content type header is present\" , function()\r",
+							"{\r",
+							"    pm.response.to.have.header(\"Content-type\");\r",
+							"})\r",
+							"pm.test(\"check value of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.eql(\"application/json\");\r",
+							"})\r",
+							"pm.test(\"check vaue of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.include(\"son\");\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"status code is not in oneof function\", function() {\r",
+							"    pm.expect(pm.response.code).to.not.be.oneOf([404]);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"content-length to be above\", function() {\r",
+							"    let data = pm.response.headers.get(\"content-length\")\r",
+							"    pm.expect(Number(data)).to.above(50)\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getproduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"status code within range\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.within(200, 404);\r",
+							"});\r",
+							"pm.test(\"Range of the status code verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,205,404,400]);\r",
+							"})\r",
+							"pm.test(\"status code below verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.below(500);\r",
+							"})\r",
+							"pm.test(\"status code above verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.above(199);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"})\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(100);\r",
+							"})\r",
+							"pm.test(\"check content type header is present\" , function()\r",
+							"{\r",
+							"    pm.response.to.have.header(\"Content-type\");\r",
+							"})\r",
+							"pm.test(\"check value of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.eql(\"application/json\");\r",
+							"})\r",
+							"pm.test(\"check vaue of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.include(\"son\");\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"status code is not in oneof function\", function() {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404,201,400]);\r",
+							"\r",
+							"})\r",
+							"\r",
+							"pm.test(\"content-length to be above\", function() {\r",
+							"    let data = pm.response.headers.get(\"content-length\")\r",
+							"    pm.expect(Number(data)).to.above(1)\r",
+							"})\r",
+							"pm.collectionVariables.set(\"id\",pm.response.json().id);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products/10",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createproduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"status code below verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.below(500);\r",
+							"})\r",
+							"pm.test(\"status code above verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.above(199);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"})\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(100);\r",
+							"})\r",
+							"pm.test(\"check content type header is present\" , function()\r",
+							"{\r",
+							"    pm.response.to.have.header(\"Content-type\");\r",
+							"})\r",
+							"pm.test(\"check value of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.eql(\"application/json\");\r",
+							"})\r",
+							"pm.test(\"check vaue of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.include(\"son\");\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"status code is not in oneof function\", function() {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"\r",
+							"})\r",
+							"\r",
+							"pm.test(\"content-length to be above\", function() {\r",
+							"    let data = pm.response.headers.get(\"content-length\")\r",
+							"    pm.expect(Number(data)).to.above(1)\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ProductName\": \"pencil\",\r\n    \"Price\": \"10\",\r\n    \"Stock\": true\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteproduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"status code within range\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.within(200, 404);\r",
+							"});\r",
+							"pm.test(\"Range of the status code verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,205,404]);\r",
+							"})\r",
+							"pm.test(\"status code below verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.below(500);\r",
+							"})\r",
+							"pm.test(\"status code above verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.above(199);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"})\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(100);\r",
+							"})\r",
+							"pm.test(\"check content type header is present\" , function()\r",
+							"{\r",
+							"    pm.response.to.have.header(\"Content-type\");\r",
+							"})\r",
+							"pm.test(\"check value of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.eql(\"application/json\");\r",
+							"})\r",
+							"pm.test(\"check vaue of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.include(\"son\");\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"status code is not in oneof function\", function() {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404,201,200]);\r",
+							"\r",
+							"})\r",
+							"\r",
+							"pm.test(\"content-length to be above\", function() {\r",
+							"    let data = pm.response.headers.get(\"content-length\")\r",
+							"    pm.expect(Number(data)).to.above(1)\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ProductName\": \"pencil\",\r\n    \"Price\": \"10\",\r\n    \"Stock\": true\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products/10",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editproduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"status code within range\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.within(200, 404);\r",
+							"});\r",
+							"pm.test(\"Range of the status code verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,205,404]);\r",
+							"})\r",
+							"pm.test(\"status code below verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.below(500);\r",
+							"})\r",
+							"pm.test(\"status code above verify\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.code).to.be.above(199);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"})\r",
+							"pm.test(\"Verify response time\", function()\r",
+							"{\r",
+							"    pm.expect(pm.response.responseTime).to.be.above(100);\r",
+							"})\r",
+							"pm.test(\"check content type header is present\" , function()\r",
+							"{\r",
+							"    pm.response.to.have.header(\"Content-type\");\r",
+							"})\r",
+							"pm.test(\"check value of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.eql(\"application/json\");\r",
+							"})\r",
+							"pm.test(\"check vaue of content-type\" , function()\r",
+							"{\r",
+							"    pm.expect(pm.response.headers.get(\"Content-type\")).to.include(\"son\");\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"check multiple headers\", function() {\r",
+							"    const data = [\"content-length\", \"content-type\", \"date\"]\r",
+							"    data.forEach(function(item) {\r",
+							"        pm.response.to.have.header(item);\r",
+							"    })\r",
+							"})\r",
+							"pm.test(\"status code is not in oneof function\", function() {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404,201,200]);\r",
+							"\r",
+							"})\r",
+							"\r",
+							"pm.test(\"content-length to be above\", function() {\r",
+							"    let data = pm.response.headers.get(\"content-length\")\r",
+							"    pm.expect(Number(data)).to.above(1)\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ProductName\": \"pencil\",\r\n    \"Price\": \"10\",\r\n    \"Stock\": false,\r\n    \"id\": \"12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products/12",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "https://69258b8082b59600d724154c.mockapi.io"
+		},
+		{
+			"key": "id",
+			"value": ""
+		}
+	]
+}
